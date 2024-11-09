@@ -12,3 +12,5 @@
 /dependencies
 /mgmt_core_wrapper
 /logs
+*/venv-cocotb*
+*venv-cocotb*
