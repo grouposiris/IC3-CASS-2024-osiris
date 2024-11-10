@@ -150,6 +150,42 @@ user_proj_example mprj (
      //.irq(user_irq)
 );
 
+/*--------------------------------------*/
+/* User project OSIRIS is instantiated*/
+/*--------------------------------------*/
+osiris_i_wrapper osiris_i (
+`ifdef USE_POWER_PINS
+	.vccd1(vccd1),	// User area 1 1.8V power
+	.vssd1(vssd1),	// User area 1 digital ground
+`endif
+
+    .wb_clk_i(wb_clk_i),
+
+    // IO Pads
+    .io_in (io_in[9:5]),
+    // .io_out(io_out[11:10]),
+    .io_out({io_out[6:0], io_out[11:10]}),
+    // .io_oeb({io_oeb[11:5]})
+    .io_oeb({io_oeb[4:0], io_oeb[11:5]})
+
+);
+
+// osiris_i_mem osiris_mem (
+// `ifdef USE_POWER_PINS
+// 	.vccd1(vccd1),	// User area 1 1.8V power
+// 	.vssd1(vssd1),	// User area 1 digital ground
+// `endif
+//
+//     .wb_clk_i(wb_clk_i),
+//
+//     // IO Pads
+//     .io_in (io_in[16:12]),
+//     // .io_out(io_out[11:10]),
+//     .io_out(io_out[18:17]),
+//     // .io_oeb({io_oeb[11:5]})
+//     .io_oeb(io_oeb[18:12])
+//
+// );
 
 endmodule	// user_project_wrapper
 
